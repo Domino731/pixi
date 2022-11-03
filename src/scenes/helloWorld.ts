@@ -40,36 +40,38 @@ export class HelloWorld extends Container {
         document.addEventListener('keypress', ({key}) => {
             switch (key) {
                 case 'w':
-                    console.log(1);
-                    this.direction = {
-                        ...DirectionInitialState,
-                        top: true
-                    }
+                    this.direction.top = true;
+                    this.direction.bottom = false;
                     break;
                 case 'd':
-                    this.direction = {
-                        ...DirectionInitialState,
-                        right: true
-                    }
+                    this.direction.left = false;
+                    this.direction.right = true;
                     break;
                 case 's':
-                    this.direction = {
-                        ...DirectionInitialState,
-                        bottom: true
-                    }
+                    this.direction.top = false;
+                    this.direction.bottom = true;
                     break;
                 case 'a':
-                    this.direction = {
-                        ...DirectionInitialState,
-                        left: true
-                    }
+                    this.direction.left = true;
+                    this.direction.right = false;
                     break;
             }
         });
 
         document.addEventListener('keyup', ({key}) => {
-            if (key === 'w' || key === 'd' || key === 's' || key === 'a') {
-                this.direction = {...DirectionInitialState};
+            switch (key) {
+                case 'w':
+                    this.direction.top = false;
+                    break;
+                case 'd':
+                    this.direction.right = false;
+                    break;
+                case 's':
+                    this.direction.bottom = false;
+                    break;
+                case 'a':
+                    this.direction.left = false;
+                    break;
             }
         });
     }
