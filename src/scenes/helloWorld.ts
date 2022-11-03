@@ -80,19 +80,29 @@ export class HelloWorld extends Container {
     }
 
     update(_: any, delta: number) {
-        if (
-            this.sprite.x <= 0 ||
-            this.sprite.x >= window.innerWidth - this.sprite.width
-        ) {
-            this.state.velocity.x = -this.state.velocity.x;
+        const {left, right, top, bottom} = this.direction;
+        if (left) {
+            this.state.velocity.x = -1;
+        } else if (right) {
+            this.state.velocity.x = 1;
+        } else {
+            this.state.velocity.x = 0;
         }
-        if (
-            this.sprite.y <= 0 ||
-            this.sprite.y >= window.innerHeight - this.sprite.height
-        ) {
-            this.state.velocity.y = -this.state.velocity.y;
+
+        if (top) {
+            this.state.velocity.y = -1;
+        } else if (bottom) {
+            this.state.velocity.y = 1;
+        } else {
+            this.state.velocity.y = 0;
         }
-        this.sprite.x += this.state.velocity.x;
-        this.sprite.y += this.state.velocity.y;
+
+        if (left || right) {
+            this.sprite.x += this.state.velocity.x;
+        }
+        if (top || bottom) {
+            this.sprite.y += this.state.velocity.y;
+        }
+
     }
 }
