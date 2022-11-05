@@ -1,9 +1,11 @@
 import * as PIXI from 'pixi.js';
-import { HelloWorld } from './scenes/helloWorld';
+import {HelloWorld} from './scenes/helloWorld';
+import {LevelRender} from "./level/render/levelRender";
 
+// load textures so they will be available for app classes
 const load = (app: PIXI.Application) => {
     return new Promise<void>((resolve) => {
-        app.loader.add('assets/hello-world.png').load(() => {
+        app.loader.add('assets/hello-world.png').add('assets/tiles_ground_spring.png').load(() => {
             resolve();
         });
     });
@@ -29,8 +31,10 @@ const main = async () => {
     document.body.appendChild(app.view);
 
     // Set scene
-    var scene = new HelloWorld(app);
+    const scene = new HelloWorld(app);
+    const level: LevelRender = new LevelRender(app);
     app.stage.addChild(scene);
+    app.stage.addChild(level.ground);
 };
 
 main();

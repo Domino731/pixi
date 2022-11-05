@@ -105,6 +105,5 @@ export class HelloWorld extends Container {
         if (top || bottom) {
             this.sprite.y += this.state.velocity.y;
         }
-
     }
 }
