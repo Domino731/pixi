@@ -56,7 +56,6 @@ table {
 .container {
     width: 100%;
     height: 100vh;
-    background-color: red;
     display: flex;
 }
 
@@ -68,6 +67,7 @@ table {
 .container div:last-child {
     width: 20%;
     height: 100%;
+    background-color: #3A86FF;
 }
 
 #map {
@@ -76,6 +76,16 @@ table {
     overflow: hidden;
     width: 1920px;
     height: 1080px;
+}
+
+#panel {
+    position: relative;
+    border: 1px solid #e8e4e4;
+    overflow: hidden;
+    width: 128px;
+    height: 176px;
+    background-image: url("../../assets/tiles_ground_spring.png");
+    margin: 20px auto;
 }
 
 #map div {
