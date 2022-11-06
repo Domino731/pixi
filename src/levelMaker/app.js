@@ -23,8 +23,9 @@ class LevelMaker {
 
         const onClickHandler = (e) => {
             if (this.selectedTile) {
+                console.log(this.selectedTile);
                 e.target.style.backgroundImage = 'url("../../assets/tiles_ground_spring.png")';
-                e.target.style.backgroundPosition = `${this.selectedTile.x * TILE_SIZE}px ${this.selectedTile.y * TILE_SIZE}px`
+                e.target.style.backgroundPosition = `-${this.selectedTile.x * TILE_SIZE}px -${this.selectedTile.y * TILE_SIZE}px`
                 console.log(this.selectedTile);
             }
         }
@@ -59,6 +60,7 @@ class LevelMaker {
         const panel = document.querySelector("#panel");
 
         const onClickHandler = (e, vector) => {
+            console.log(vector);
             this.selectedTile = vector;
         }
 
