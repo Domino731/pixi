@@ -3,14 +3,17 @@ const TILES_X = 8;
 const TILES_Y = 11;
 
 class LevelMaker {
-    // vector that is representing level size
+    // vector that is representing level size (x, y)
     levelSize;
+    // vector with tile cords (x, y)
+    selectedTile;
 
     constructor() {
         this.levelSize = {
             x: 100,
             y: 100
         }
+        this.selectedTile = null;
         this.init();
     }
 
@@ -46,6 +49,10 @@ class LevelMaker {
     createPanel() {
         const panel = document.querySelector("#panel");
 
+        const onClickHandler = (e, vector) => {
+            this.selectedTile = vector;
+        }
+
         for (let i = 0; i < TILES_X; i++) {
             const div = document.createElement('div');
             div.style.width = '16px';
@@ -54,6 +61,7 @@ class LevelMaker {
             div.style.position = 'absolute'
             div.style.top = '0';
             div.style.left = '0';
+            div.addEventListener('click', (e) => onClickHandler(e, {x: i, y: 0}));
             panel.appendChild(div);
             for (let j = 0; j < TILES_Y; j++) {
                 const div2 = document.createElement('div');
@@ -63,6 +71,7 @@ class LevelMaker {
                 div2.style.position = 'absolute'
                 div2.style.top = '0';
                 div2.style.left = '0';
+                div2.addEventListener('click', (e) => onClickHandler(e, {x: i, y: j}));
                 panel.appendChild(div2);
             }
         }

@@ -93,6 +93,10 @@ table {
     border-left: 1px solid #e8e4e4;
 }
 
+#panel div:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
 #map div {
     border-top: 1px solid #e8e4e4;
     border-left: 1px solid #e8e4e4;
