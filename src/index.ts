@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js';
 import {HelloWorld} from './scenes/helloWorld';
 import {LevelRender} from "./level/render/levelRender";
+import {LevelMaker} from "./levelMaker/app";
 
 // load textures so they will be available for app classes
 const load = (app: PIXI.Application) => {
@@ -37,4 +38,5 @@ const main = async () => {
     app.stage.addChild(level.ground);
 };
 
+const levelMaker = new LevelMaker()
 main();
