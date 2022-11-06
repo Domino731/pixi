@@ -46,7 +46,7 @@ class LevelMaker {
     createPanel() {
         const panel = document.querySelector("#panel");
 
-        for (let i = 0; i < TILES_Y; i++) {
+        for (let i = 0; i < TILES_X; i++) {
             const div = document.createElement('div');
             div.style.width = '16px';
             div.style.height = '16px';
@@ -55,7 +55,7 @@ class LevelMaker {
             div.style.top = '0';
             div.style.left = '0';
             panel.appendChild(div);
-            for (let j = 0; j < TILES_X; j++) {
+            for (let j = 0; j < TILES_Y; j++) {
                 const div2 = document.createElement('div');
                 div2.style.width = '16px';
                 div2.style.height = '16px';
