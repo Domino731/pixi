@@ -21,6 +21,13 @@ class LevelMaker {
     createMap() {
         const map = document.querySelector("#map")
 
+        const onClickHandler = (e) => {
+            if (this.selectedTile) {
+                e.target.style.backgroundImage = 'url("../../assets/tiles_ground_spring.png")';
+                e.target.style.backgroundPosition = `${this.selectedTile.x * TILE_SIZE}px ${this.selectedTile.y * TILE_SIZE}px`
+                console.log(this.selectedTile);
+            }
+        }
         // building ground
         for (let i = 0; i < this.levelSize.y; i++) {
             const div = document.createElement('div');
@@ -30,6 +37,7 @@ class LevelMaker {
             div.style.position = 'absolute'
             div.style.top = '0';
             div.style.left = '0';
+            div.addEventListener('click', (event) => onClickHandler(event))
             map.appendChild(div);
             for (let j = 0; j < this.levelSize.x; j++) {
                 const div2 = document.createElement('div');
@@ -39,6 +47,7 @@ class LevelMaker {
                 div2.style.position = 'absolute'
                 div2.style.top = '0';
                 div2.style.left = '0';
+                div2.addEventListener('click', (event) => onClickHandler(event))
                 map.appendChild(div2);
             }
         }
